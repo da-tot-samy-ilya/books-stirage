@@ -6,21 +6,23 @@
     border-radius: 5px;
     padding: 10px;
     display: grid;
-    grid-template-columns: 2fr 4fr 1fr 1fr 2fr;
+    grid-template-columns: 4fr 8fr 2fr 3fr 4fr 1fr;
     margin-top: 10px;
-    //.name {
-    //    flex-grow: 1;
-    //}
-    //.year {
-    //    flex-grow: 1;
-    //}
-    //.rate {
-    //    flex-grow: 1;
-    //}
-    //.isbn {
-    //    flex-grow: 1;
-    //}
-    //.authors {
-    //    flex-grow: 1;
-    //}
+    align-items: center;
+}
+.delete {
+    margin-left: auto;
+    width: 30px;
+    height: 30px;
+    opacity: 0.5;
+    display: flex;
+    transition-duration: 0.2s;
+    >img {
+        object-fit: fill;
+        margin: auto;
+        cursor: pointer;
+    }
+    &:hover {
+        opacity: 0.6;
+    }
 }

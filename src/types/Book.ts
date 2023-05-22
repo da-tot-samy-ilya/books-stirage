@@ -1,4 +1,5 @@
 export class Book {
+    id: number
     name: string
     authors: string[]
     year: number | null
@@ -10,5 +11,6 @@ export class Book {
         this.year = year
         this.rate = rate
         this.isbn = isbn
+        this.id = Date.now()
     }
 }
