@@ -1,4 +1,5 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, useState} from 'react';
+import ISBN from "node-isbn"
 import styles from "./BooksForm.module.scss"
 import MyInput from "../UI/inputs/MyInput/MyInput";
 import AuthorsList from "../AuthorsList/AuthorsList";
@@ -23,6 +24,10 @@ const BooksForm: FC<BooksFormProps> = ({addBook}) => {
     const [isCorrectRate, setIsCorrectRate] = useState(true)
     const [isCorrectIsbn, setIsCorrectIsbn] = useState(true)
 
+    const [isCorrectIsbnReal, setIsCorrectIsbnReal] = useState<boolean | null>(null)
+
+    const [isbnWarn, setIsbnWarn] = useState("")
+    const [isLoadingISBN, setIsLoadingISBN] = useState(false)
     let isCorrectFields = isCorrectName && isCorrectAuthors && isCorrectYear && isCorrectRate && isCorrectIsbn
     const onCreateBook = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
@@ -37,7 +42,25 @@ const BooksForm: FC<BooksFormProps> = ({addBook}) => {
         setIsCorrectAuthors(false)
         setIsCorrectName(false)
     }
+    const checkISBN = async (e: React.MouseEvent<HTMLButtonElement>, isbn: string) => {
+        e.preventDefault()
+        setIsLoadingISBN(true)
+        console.log("start")
+        await ISBN.resolve(isbn, function (err, book) {
+            if (err) {
+                setIsbnWarn("This ISBN is not found!")
+                setIsCorrectIsbnReal(false)
+                setIsLoadingISBN(false)
+            } else {
+                setIsbnWarn(`This ISBN is correct, its name is: ${book.title}`)
+                setIsCorrectIsbnReal(true)
+                setIsLoadingISBN(false)
+            }
+        });
+        console.log("end")
 
+
+    }
     return (
         <form className={styles.form}>
             <MyInput
@@ -69,9 +92,16 @@ const BooksForm: FC<BooksFormProps> = ({addBook}) => {
             <MyInput
                 value={isbn || ""}
                 placeholder="ISBN"
-                warningMessage="ISBN have to be not empty string"
-                checkCorrect={str => {let a = str !== ""; setIsCorrectIsbn(a); return a }}
+                warningMessage="ISBN cant be empty"
+                checkCorrect={str => {setIsCorrectIsbn(str !== ""); return isCorrectIsbn }}
                 onChange={e => setIsbn(e.target.value)}/>
+            <div style={{height: "10px"}}></div>
+            <MyButton isDisabled={isLoadingISBN} onClick={(e) => checkISBN(e, isbn || "")}>Check ISBN</MyButton>
+            <div>{isCorrectIsbnReal !== null
+                ? !isLoadingISBN
+                    ? isbnWarn
+                    : "loading....."
+                : ""}</div>
             <div style={{height: "30px"}}></div>
             <MyButton isDisabled={!isCorrectFields} onClick={onCreateBook}>Create book</MyButton>
         </form>

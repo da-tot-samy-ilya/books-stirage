@@ -17,7 +17,7 @@ const BooksListItem: FC<BooksListItemProps>= ({book, number, removeBook, removab
             <div className={styles.rate}>{book.rate}</div>
             <div className={styles.year}>{book.year || "-"}</div>
             <div className={styles.isbn}>{book.isbn || "-"}</div>
-            <div style={{display: removable ? "block" : "none"}} onClick={() => removeBook(book.id)} className={styles.delete}><img src={remove} alt=""/></div>
+            <div style={{display: removable ? "flex" : "none"}} onClick={() => removeBook(book.id)} className={styles.delete}><img src={remove} alt=""/></div>
         </div>
     );
 };
