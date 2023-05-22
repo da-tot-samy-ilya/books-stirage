@@ -1,0 +1,26 @@
+.item {
+    background-color: white;
+    -webkit-box-shadow: 1px 2px 7px 0px rgba(124, 124, 124, 0.27);
+    -moz-box-shadow: 1px 2px 7px 0px rgba(124, 124, 124, 0.27);
+    box-shadow: 1px 2px 7px 0px rgba(124, 124, 124, 0.27);
+    border-radius: 5px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 2fr 4fr 1fr 1fr 2fr;
+    margin-top: 10px;
+    //.name {
+    //    flex-grow: 1;
+    //}
+    //.year {
+    //    flex-grow: 1;
+    //}
+    //.rate {
+    //    flex-grow: 1;
+    //}
+    //.isbn {
+    //    flex-grow: 1;
+    //}
+    //.authors {
+    //    flex-grow: 1;
+    //}
+}

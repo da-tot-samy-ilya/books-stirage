@@ -1,0 +1,36 @@
+.button {
+    display: block;
+    height: fit-content;
+    width: fit-content;
+    padding: 10px 30px 10px 30px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background: rgb(103,141,222);
+    background: linear-gradient(180deg, rgba(103,141,222,1) 0%, rgba(39,95,180,1) 100%);
+
+    -webkit-box-shadow: 1px 2px 7px 0px rgba(124, 124, 124, 0.27);
+    -moz-box-shadow: 1px 2px 7px 0px rgba(124, 124, 124, 0.27);
+    box-shadow: 1px 2px 7px 0px rgba(124, 124, 124, 0.27);
+    transition-duration: 0.2s;
+    &:active {
+        background: rgb(79,109,173);
+        background: linear-gradient(180deg, rgba(79,109,173,1) 0%, rgba(31,77,147,1) 100%);
+    }
+}
+.button__disabled {
+    display: block;
+    height: fit-content;
+    width: fit-content;
+    padding: 10px 30px 10px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: default;
+    color: white;
+    background: rgb(184, 192, 208);
+    background: linear-gradient(180deg, rgb(170, 182, 201) 0%, rgb(112, 134, 175) 100%);
+    transition-duration: 0.2s;
+    -webkit-box-shadow: 1px 2px 7px 0px rgba(124, 124, 124, 0.27);
+    -moz-box-shadow: 1px 2px 7px 0px rgba(124, 124, 124, 0.27);
+    box-shadow: 1px 2px 7px 0px rgba(124, 124, 124, 0.27);
+}
