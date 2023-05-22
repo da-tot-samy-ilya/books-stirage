@@ -3,6 +3,7 @@ import styles from "./BooksStorage.module.scss"
 import {Book} from "../../types/Book";
 import BooksForm from "../BooksForm/BooksForm";
 import BooksList from "../BooksList/BooksList";
+import Recommendation from "../Recomendation/Recommendation";
 const BooksStorage = () => {
     const [books, setBooks] = useState<Book[]>([])
 
@@ -17,12 +18,20 @@ const BooksStorage = () => {
             .map(el => el.year)
             .filter(el => el !== null)))
         .sort((a,b) => (b || 0) - (a || 0))
+
+    const booksWithoutYear = books.filter(el => el.year === null)
+
     return (
         <div>
             <BooksForm addBook={addBook}/>
+            <Recommendation books={books}/>
             <div className={styles.booksStorage}>
                 {years.map(year => <BooksList removeBook={removeBook} key={year} year={year || 0} books={books.filter(el => el.year === year)}/>)}
-                <BooksList removeBook={removeBook} year="Without year" books={books.filter(el => el.year === null)}/>
+                {books.length > 0
+                    ? booksWithoutYear.length > 0
+                        ? <BooksList removeBook={removeBook} year="Without year" books={booksWithoutYear}/>
+                        : <div></div>
+                    : <div className={styles.emptyWarn}>Storage is empty :(</div>}
             </div>
         </div>
     );

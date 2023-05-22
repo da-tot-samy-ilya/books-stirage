@@ -30,7 +30,7 @@ const BooksList: FC<BooksListProps> = ({books, year, removeBook}) => {
             </div>
             {books
                 .sort((a, b) => compare(a.name, b.name))
-                .map((el, i) => <BooksListItem removeBook={removeBook} key={el.id} book={el} number={i}/>)}
+                .map((el, i) => <BooksListItem removable removeBook={removeBook} key={el.id} book={el} number={i}/>)}
         </div>
     );
 };
