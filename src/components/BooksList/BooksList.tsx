@@ -5,12 +5,12 @@ import BooksListItem from "./BooksListItem/BooksListItem";
 
 interface BooksListProps {
     books: Book[]
-    year: number | "Without year"
+    header: string
     removeBook: (id: number) => void
 }
 
 
-const BooksList: FC<BooksListProps> = ({books, year, removeBook}) => {
+const BooksList: FC<BooksListProps> = ({books, header, removeBook}) => {
     const compare = (a: string, b: string) => {
         const A = a.toUpperCase()
         const B = b.toUpperCase()
@@ -20,7 +20,7 @@ const BooksList: FC<BooksListProps> = ({books, year, removeBook}) => {
     }
     return (
         <div className={styles.list}>
-            <div className={styles.year}>{year}</div>
+            <div className={styles.year}>{header}</div>
             <div className={styles.header}>
                 <div className={styles.headeritem}>Book name</div>
                 <div className={styles.headeritem}>Authors</div>
