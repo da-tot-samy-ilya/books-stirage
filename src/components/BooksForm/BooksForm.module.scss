@@ -1,3 +1,15 @@
+.form_wrap {
+    z-index: 10;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.89);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .form {
-    
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 50px;
 }

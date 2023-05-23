@@ -12,7 +12,6 @@ interface AuthorsListProps {
 
 
 const AuthorsList: FC<AuthorsListProps> = ({onAdd, authors, checkGlobalCorrect}) => {
-    // const [authors, setAuthors] = useState<string[]>([])
     const [inputVal, setInputVal] = useState<string>("")
     const [isCorrect, setIsCorrect] = useState<boolean>(false)
     const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {
